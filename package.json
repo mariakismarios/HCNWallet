@@ -1,95 +1,53 @@
 {
-  "name": "kristweb",
-  "version": "1.1.1",
-  "description": "Krist Web Wallet",
-  "main": "index.html",
+  "name": "hcn_wallet",
+  "version": "1.0.0",
+  "description": "An Electron wallet for the HornyCoin currency.",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
-  "keywords": [
-    "krist",
-    "web",
-    "wallet",
-    "kristweb"
-  ],
-  "author": "Lemmmy",
-  "license": "ISC",
-  "repository": "github:Lemmmy/KristWeb",
+  "author": "Marios Sardis",
+  "license": "GPL-3.0",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-eslint": "^6.0.4",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browserify": "^13.3.0",
-    "eslint": "^2.13.0",
-    "eslint-plugin-babel": "^3.2.0",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^2.0.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^1.12.0",
-    "gulp-uglify": "^1.5.3",
-    "gulp-util": "^3.0.8",
-    "hbsfy": "^2.8.1",
-    "lodash": "^4.17.4",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^11.2.3"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "backbone": "^1.3.3",
-    "backbone.localstorage": "^1.1.16",
-    "backbone.marionette": "^2.4.7",
-    "backbone.modal": "^1.1.6",
-    "backbone.paginator": "^2.0.6",
-    "backbone.radio": "^1.0.5",
-    "backbone.service": "^0.5.2",
-    "backbone.storage": "^0.2.1",
-    "browserify-cryptojs": "^0.3.1",
-    "browserify-swap": "^0.2.2",
-    "clipboard": "^1.7.1",
-    "cropper": "^2.3.4",
-    "d3": "^3.5.17",
-    "file-saver": "^2.0.0-rc.4",
-    "handlebars": "^4.0.11",
-    "jquery": "^2.2.4",
-    "jquery-sortable": "^0.9.13",
-    "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "moment": "^2.22.0",
-    "nprogress": "^0.2.0",
-    "nvd3": "^1.8.6",
-    "prefixfree": "^1.0.0",
-    "rand-password-gen": "^2.1.2",
-    "resolve": "^1.5.0",
-    "securerandom": "0.0.2",
-    "selectize": "^0.12.2",
-    "sortablejs": "^1.7.0",
-    "timeago": "^1.6.1",
-    "zxcvbn": "^4.4.2"
+    "electron-squirrel-startup": "^1.0.0"
   },
-  "browserify-swap": {
-    "@packages": [
-      "underscore"
-    ],
-    "dist": {
-      "underscore.js$": "lodash"
-    }
-  },
-  "browserify": {
-    "transform": [
-      "babelify",
-      [
-        "hbsfy",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon" : "icon.ico"
+      },
+      "makers": [
         {
-          "extensions": [
-            "hbs"
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "hcn_wallet"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
           ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
         }
-      ],
-      "browserify-swap"
-    ]
+      ]
+    }
   }
 }
