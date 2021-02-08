@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from krist.club/images/touch/apple-touch-icon.png by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Feb 2021 07:09:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="description" content="Krist Web Wallet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<title>KristWeb</title>
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="kristweb">
+	<link rel="icon" sizes="192x192" href="chrome-touch-icon-192x192.html">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="kristweb">
+	<link rel="apple-touch-icon" href="apple-touch-icon.html">
+	<meta name="msapplication-TileImage" content="ms-touch-icon-144x144-precomposed.html">
+	<meta name="msapplication-TileColor" content="#3897d9">
+	<meta name="msapplication-config" content="none">
+	<meta name="theme-color" content="#3897d9">
+
+	<link rel="canonical" href="https://kristweb.ceriat.net/">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="../../css/app.css">
+</head>
+<body class="dense-retina">
+	<div id="app">
+		<div class="preloader">
+			<noscript>
+				KristWeb requires JavaScript to be enabled in order to run. Please enable it in your browser, or exclude
+				KristWeb in your NoScript addon.
+			</noscript>
+
+			<div id="loader-spinner"></div>
+			<div id="loader-text">Loading...</div>
+			<div id="loader-progress-bar" style="opacity: 0;"><div class="progress" id="loader-progress"></div></div>
+
+			<script>
+				if (navigator.userAgent.indexOf("MSIE") != -1) {
+					document.write("btw ur browser sucks");
+				}
+			</script>
+		</div>
+	</div>
+
+	<script>
+		var progressBar = document.getElementById("loader-progress-bar");
+		var progress = document.getElementById("loader-progress");
+
+		var loaderText = document.getElementById("loader-text");
+
+		progressBar.style.opacity = 1.0;
+
+		loaderText.innerText = "Loading required files";
+
+		var vendor = new XMLHttpRequest();
+
+		vendor.addEventListener("progress", function (e) {
+			if (e.lengthComputable) {
+				loaderText.innerText = "Loading required files (" + Math.floor(e.loaded / e.total * 100) + "%)";
+				progress.style.width = (Math.floor(e.loaded / e.total * progressBar.offsetWidth)) + "px";
+			} else {
+				loaderText.innerText = "Loading required files";
+			}
+		});
+
+		vendor.addEventListener("load", function () {
+			loaderText.innerText = "Loading...";
+
+			eval(this.responseText);
+
+			var app = new XMLHttpRequest();
+
+			app.addEventListener("progress", function (e) {
+				if (e.lengthComputable) {
+					loaderText.innerText = "Loading Kristweb (" + Math.floor(e.loaded / e.total * 100) + "%)";
+					progress.style.width = (Math.floor(e.loaded / e.total * progressBar.offsetWidth)) + "px";
+				} else {
+					loaderText.innerText = "Loading Kristweb";
+				}
+			});
+
+			app.addEventListener("load", function () {
+				progressBar.style.opacity = 0;
+				loaderText.innerText = "Loading...";
+
+				eval(this.responseText);
+			});
+
+			app.open("GET.html", "../../js/app.js");
+			app.send();
+		});
+
+		vendor.open("GET.html", "../../js/vendor.js");
+		vendor.send();
+	</script>
+</body>
+
+<!-- Mirrored from krist.club/images/touch/apple-touch-icon.png by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Feb 2021 07:09:21 GMT -->
+</html>
