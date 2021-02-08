@@ -4,5 +4,5 @@
 node_modules
 dist/
 .madgerc
-.node_modules
-.out
+.node_modules/
+.out/
