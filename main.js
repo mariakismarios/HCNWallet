@@ -12,6 +12,7 @@ function createWindow () {
   win.loadFile('index.html')
 }
 
+
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
@@ -25,3 +26,7 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+app.on('browser-window-created',function(e,window) {
+  window.setMenu(null);
+});
